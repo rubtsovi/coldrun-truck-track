@@ -1,3 +1,4 @@
+import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
 import basicSSL from '@vitejs/plugin-basic-ssl';
 import react from '@vitejs/plugin-react';
 import dns from 'dns';
@@ -6,7 +7,14 @@ import path from 'path';
 import { CommonServerOptions, defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-const vitePlugins = [react(), tsconfigPaths()];
+const vitePlugins = [
+  react(),
+  tsconfigPaths(),
+  TanStackRouterVite({
+    routesDirectory: './src/router/routes',
+    generatedRouteTree: './src/router/routeTree.gen.ts',
+  }),
+];
 
 let httpsConfig: CommonServerOptions['https'] = undefined;
 if (process.env.IS_SECURE === 'true') {

@@ -1,10 +1,18 @@
-function App() {
+import { RouterProvider } from '@tanstack/react-router';
+import { PrimeReactProvider } from 'primereact/api';
 
+import httpClient from '_config/httpClient';
+import HttpClientProvider from '_context/HttpClientContext';
+import router from '_src/router';
+
+function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world</h1>
-    </>
-  )
+    <HttpClientProvider client={httpClient}>
+      <PrimeReactProvider>
+        <RouterProvider router={router} />
+      </PrimeReactProvider>
+    </HttpClientProvider>
+  );
 }
 
-export default App
+export default App;

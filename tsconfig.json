@@ -18,8 +18,30 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Paths */
+    "baseUrl": ".",
+    "paths": {
+      "_routes/*": ["src/router/routes/*"],
+      "_api/*": ["src/api/*"],
+      "_pages/*": ["src/pages/*"],
+      "_components/*": ["src/components/*"],
+      "_utils": ["src/lib/utils.ts"],
+      "_context/*": ["src/context/*"],
+      "_config/*": ["src/config/*"],
+      "_models/*": ["src/models/*"],
+      "_src/*": ["src/*"]
+    }
   },
-  "include": ["src"],
+
+  "include": [
+    "src",
+    "@types",
+    "./eslint.config.cjs",
+    "./postcss.config.js",
+    "./tailwind.config.js"
+  ],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
